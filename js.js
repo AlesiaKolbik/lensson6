@@ -2,11 +2,15 @@
 
 let node = document.documentElement;
 
-function printTree(node) {
+function printTree(node,level) {
     if(node === null) return;
-    console.log(node);
+    if(node.nodeType === 1) {
+        console.log(level+node.nodeName);
+    }
+    level+=" ";
     for(let i = 0;i<node.childNodes.length;i++){
-        console.log(node.childNodes[i]);
-        printTree(node.childNodes[i]);
+        printTree(node.childNodes[i],level);
     }
 }
+
+printTree(node,"");
